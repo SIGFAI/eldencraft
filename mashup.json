@@ -1,0 +1,240 @@
+{
+  "id": "sigf/eldencraft",
+  "version": "0.3.0",
+  "name": "EldenCraft",
+  "tagline": "Minecraft survival inside Elden Ring: gather, craft and build in the Lands Between, and fight its bosses with Minecraft weapons (offline).",
+  "how_to_play": [
+    "Explore the Lands Between as a Minecraft player: gather, craft tools, build among the ruins and fight Elden Ring's enemies with Minecraft weapons.",
+    "Press Play: a hidden Minecraft starts first, then Elden Ring offline. Load your character; Minecraft takes over movement once it has connected.",
+    "Minecraft's keys move, mine, build and fight; E inventory. R uses doors, levers, items and Sites of Grace. Escape still opens Elden Ring's menu.",
+    "F8 Minecraft's pause menu (options, GUI scale), F9 first-person camera, F10 hands control back to Elden Ring, F5 camera modes.",
+    "Minecraft hearts are your health: at zero you die in Elden Ring and respawn at a grace. Bosses drop named gear and enchanted books once per world."
+  ],
+  "kind": "passthrough",
+  "games": [
+    {
+      "game": "eldenring",
+      "role": "host",
+      "label": "Elden Ring",
+      "engine": "Elden Ring (FromSoftware, D3D12) + me3 native DLL eldencraft (Rust, fromsoftware-rs 59fbd3b)",
+      "apps": {
+        "steam": "1245620"
+      },
+      "runtime": "exe 2.7.1 only (App Ver. 1.17.1)"
+    },
+    {
+      "game": "minecraft",
+      "role": "guest",
+      "label": "Minecraft",
+      "engine": "Minecraft Java 26.3 + Fabric mod eldencraft (Java)",
+      "mc": "26.3",
+      "loader": "fabric@0.19.5",
+      "java": "25"
+    }
+  ],
+  "requires": [
+    {
+      "id": "me3",
+      "version": "0.13.0",
+      "license": "MIT OR Apache-2.0, shipped unchanged",
+      "page": "https://github.com/garyttierney/me3/releases/tag/v0.13.0",
+      "note": "installed into ELDEN RING/EldenCraft/me3 by the app; it starts Elden Ring offline without Easy Anti-Cheat",
+      "source": {
+        "url": "https://github.com/SIGFAI/eldencraft/releases/download/v0.3.0/me3-windows-amd64.zip",
+        "sha256": "a8b693c574106f20532ab1e8b58b2452f37370679b938a884fe75f87f9b68c2b"
+      }
+    },
+    {
+      "id": "fabric-loader",
+      "version": "0.19.5"
+    },
+    {
+      "id": "fabric-api",
+      "version": "0.161.0+26.3",
+      "note": "in the Minecraft pack (downloaded from Modrinth)"
+    }
+  ],
+  "install": [
+    {
+      "game": "eldenring",
+      "strategy": "game-dir-snapshot",
+      "loader": "me3",
+      "files": [
+        {
+          "src": "me3-windows-amd64.zip",
+          "dst": "{game}/EldenCraft/me3",
+          "unpack": true,
+          "contents": [
+            {
+              "path": "CHANGELOG.pdf",
+              "sha256": "7813b8af3f96433f66eca36d745ef969e319228aeea44f900042e09560cbc802"
+            },
+            {
+              "path": "LICENSE-APACHE",
+              "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+            },
+            {
+              "path": "LICENSE-MIT",
+              "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+            },
+            {
+              "path": "bin/me3_mod_host.dll",
+              "sha256": "e08af3dd9d7be2655e2f245fa2bfc316aa8c6af74a3f2dc7cb0598f96c769317"
+            },
+            {
+              "path": "bin/me3-launcher.exe",
+              "sha256": "4195535ac8448d20e620bc911772a18fc75462e4c36668968164842d787d0011"
+            },
+            {
+              "path": "bin/me3.exe",
+              "sha256": "203a726ab40ecac6ee9deaba1aa96f741d87e12def549cdeb48f99e5fe16d52d"
+            },
+            {
+              "path": "eldenring-default.me3",
+              "sha256": "5814d1dfae8b9e6dc252e7db0a863bc49560529da0b9c4a289895cc86ca9e352"
+            },
+            {
+              "path": "launch-eldenring-mods.bat",
+              "sha256": "707536e70af90f5cc80de3ffa8a510fcbc575ac614285f445792084babe97444"
+            },
+            {
+              "path": "launch-nightreign-mods.bat",
+              "sha256": "8cdd1619a45bf712a95007faae0e8fd67cbdff77058e43963b7f889667d9d365"
+            },
+            {
+              "path": "launch-sekiro-mods.bat",
+              "sha256": "d028ef898699d4d2186d22660c431355a1a2f0d1b1828828b634f2e44d8dd4ab"
+            },
+            {
+              "path": "nightreign-default.me3",
+              "sha256": "17b6776dc392057ca7b08f99fe2e241ae6bacbddbf0057a238924e13da8001c7"
+            },
+            {
+              "path": "sekiro-default.me3",
+              "sha256": "f944f7f386bc81ec306170d46a9af5a87af996b0843427d5d8397054408bcbf9"
+            }
+          ],
+          "url": "https://github.com/SIGFAI/eldencraft/releases/download/v0.3.0/me3-windows-amd64.zip",
+          "sha256": "a8b693c574106f20532ab1e8b58b2452f37370679b938a884fe75f87f9b68c2b",
+          "size": 7402971
+        },
+        {
+          "src": "eldencraft-eldenring.zip",
+          "dst": "{game}",
+          "unpack": true,
+          "contents": [
+            {
+              "path": "EldenCraft/eldencraft.me3",
+              "sha256": "ab520fa8e3e7533b6c7ec75b61aeb68d7f3d351e9bbd5aefb720fdf9fd00d669"
+            },
+            {
+              "path": "EldenCraft/LICENSE.txt",
+              "sha256": "697666b2381f293a37fde510678c34516f0f87703dc14b9e11fb0fd3762392b8"
+            },
+            {
+              "path": "EldenCraft/native/eldencraft.dll",
+              "sha256": "39149b8d5d4881758e8e89fe27eaf8dd048045b2c0e1be106d57dfb3875fcef5"
+            }
+          ],
+          "url": "https://github.com/SIGFAI/eldencraft/releases/download/v0.3.0/eldencraft-eldenring.zip",
+          "sha256": "a05f570798e90657d5cee395b618ba2b1bf5cdafc09997e0eb88323a02439f5d",
+          "size": 679939
+        }
+      ]
+    },
+    {
+      "game": "minecraft",
+      "strategy": "mrpack",
+      "jvm_args": [
+        "-Deldencraft.startHidden=true",
+        "-Xmx4G"
+      ],
+      "pack": {
+        "src": "eldencraft.mrpack",
+        "url": "https://github.com/SIGFAI/eldencraft/releases/download/v0.3.0/eldencraft.mrpack",
+        "sha256": "1690120e0c7ddee0b00bec9ed50c027dad0c455451ae7d9d9552efaee511cac8",
+        "size": 459723
+      }
+    }
+  ],
+  "launch": [
+    {
+      "game": "minecraft"
+    },
+    {
+      "game": "eldenring",
+      "exe": "EldenCraft/me3/bin/me3.exe",
+      "args": [
+        "launch",
+        "-g",
+        "eldenring",
+        "-p",
+        "{game}/EldenCraft/eldencraft.me3",
+        "-e",
+        "{game}/Game/eldenring.exe",
+        "--online",
+        "false"
+      ]
+    }
+  ],
+  "files": [
+    {
+      "name": "me3-windows-amd64.zip",
+      "url": "https://github.com/SIGFAI/eldencraft/releases/download/v0.3.0/me3-windows-amd64.zip",
+      "sha256": "a8b693c574106f20532ab1e8b58b2452f37370679b938a884fe75f87f9b68c2b",
+      "size": 7402971
+    },
+    {
+      "name": "eldencraft-eldenring.zip",
+      "url": "https://github.com/SIGFAI/eldencraft/releases/download/v0.3.0/eldencraft-eldenring.zip",
+      "sha256": "a05f570798e90657d5cee395b618ba2b1bf5cdafc09997e0eb88323a02439f5d",
+      "size": 679939
+    },
+    {
+      "name": "eldencraft.mrpack",
+      "url": "https://github.com/SIGFAI/eldencraft/releases/download/v0.3.0/eldencraft.mrpack",
+      "sha256": "1690120e0c7ddee0b00bec9ed50c027dad0c455451ae7d9d9552efaee511cac8",
+      "size": 459723
+    }
+  ],
+  "source": {
+    "repo": "https://github.com/wargamereview-ship-it/EldenCraft",
+    "license": "MIT AND (MIT OR Apache-2.0)",
+    "upstream_license": "MIT",
+    "tag": "0.3",
+    "commit": "5e0cab1da95a9d8f4955c5c1cc6a28f3de727f2f",
+    "hosted": "https://github.com/SIGFAI/eldencraft",
+    "based_on": "https://github.com/chasmlol/SkyCraft",
+    "bundled": [
+      {
+        "name": "me3",
+        "version": "0.13.0",
+        "repo": "https://github.com/garyttierney/me3",
+        "commit": "989b522214e39c83d701f4182c4f0a86ad79a30a",
+        "license": "MIT OR Apache-2.0"
+      }
+    ]
+  },
+  "media": {},
+  "built_by": {
+    "author": "wargamereview-ship-it",
+    "authors": [
+      "ATStrategist (wargamereview-ship-it)",
+      "chasmlol (SkyCraft, upstream of the Minecraft mod)"
+    ],
+    "packaged_by": "SIGF"
+  },
+  "idea_by": "wargamereview-ship-it",
+  "built_at": "2026-10-07T00:00:00.000Z",
+  "conflicts": [
+    "sigf/minecraft-ring"
+  ],
+  "status": "beta",
+  "issues": "https://github.com/wargamereview-ship-it/EldenCraft/issues",
+  "notes": [
+    "You need Elden Ring on Steam at executable 2.7.1 (App Ver. 1.17.1; other versions are refused) and Minecraft: Java Edition. Steam must be running. Two games run at once: expect a heavy load on 16 GB of RAM.",
+    "Offline only: me3 (shipped, Restore removes it) starts Elden Ring without Easy Anti-Cheat. Never take this game folder online. It plays on your normal Elden Ring save, offline: back it up first if you care about it.",
+    "Early playable build: tested in play by the author on Linux/Proton only; newer rewards, wards and status effects are built but not fully played. Some players report crashes on the Minecraft camera (F8) with NVIDIA drivers.",
+    "Single player. Report bugs to the author with eldencraft.log (ELDEN RING\\EldenCraft\\native) and Minecraft's latest.log; Restore leaves those logs."
+  ]
+}
